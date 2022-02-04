@@ -3,30 +3,33 @@
  * https://m.blog.naver.com/yyj9301/222004086549
  **/
 
+//내가 작성한 코드
 const LRU = (memorySize, arr) => {
     //순서대로 작업내역을 메모리에 추가
     //메모리 사이즈 넘으면 기존작업 뒤로 밀고 맨앞에 작업 추가
     //(메모리 사이즈 정해져있어서 마지막작업 삭제하고 추가하는 식으로)
     //같은작업이 들어오면 맨앞으로 순서 변경시킴
 
-    let temp = 0
-    let memory = new Array(memorySize);
+    let result =[];
+
     for(let i = 0; i < arr.length; i++){
-        if(!memory.includes(arr[i])){
-            if(temp == memorySize - 1){
-                // memory.shift()
-                memory.unshift(arr[i])
-            } else {
-                memory[i] = arr[i]
-                temp++
-            }
-        } else {
-            memory = memory.filter(el => el !== arr[i])
-            memory.unshift(arr[i])
-            temp ++
+        if(result.length === memorySize){
+            result.pop()
         }
+        if(result.includes(arr[i])){
+            result = result.filter(el => el !== arr[i])
+            result.unshift(arr[i])
+        } else {
+            result.unshift(arr[i])
+        }
+        console.log(`${i + 1}회차 : ${result}`)
     }
-    return memory
+    return result;
+}
+
+//sol
+const sol = (memorySize, arr) => {
+
 }
 
 const memorySize = 5
