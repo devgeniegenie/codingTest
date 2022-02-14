@@ -28,12 +28,31 @@ const LRU = (memorySize, arr) => {
     return result;
 }
 
-//sol
+//sol2 : 삽입정렬 응용
 const sol = (memorySize, arr) => {
-
+    let result = Array.from({length : memorySize}, () => null)
+    for(let x of arr){
+        let idx = -1
+        for(let i = 0; i < memorySize -1 ; i++){
+            if(x === result[i]) idx = i
+        }
+        if(idx === -1){
+            for(let i = memorySize - 1; i >= 1; i--){
+                result[i] = result[i-1]
+            }
+        } else {
+            for( let i = idx; i >= 1; i--){
+                result[i] = result[i-1]
+            }
+        }
+        result[0] = x
+    }
+    return  result
 }
 
 const memorySize = 5
 const inputArr = [1, 2, 3, 2, 6, 2, 3, 5, 7]
 
-console.log(LRU(memorySize, inputArr))
+// console.log(LRU(memorySize, inputArr))
+console.log(sol(memorySize, inputArr))
+//7 5 3 2 6
