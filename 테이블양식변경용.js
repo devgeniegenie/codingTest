@@ -1,12 +1,14 @@
 //인수인계문서작성중 테이블명세서 양식이 바뀌는 일이 생겨 기존데이터를 가공할 일이 생김
 
 const input =
-    `bigint\tUnchecked
-nvarchar(100)\tChecked
-date\tChecked
-date\tChecked
-nvarchar(4)\tChecked
-nvarchar(1)\tUnchecked
+    `nvarchar(10)\tChecked
+nvarchar(36)\tChecked
+nvarchar(36)\tChecked
+nvarchar(12)\tChecked
+tinyint\tChecked
+nvarchar(10)\tChecked
+tinyint\tChecked
+int\tChecked
 \tUnchecked`.replace(/'\t'/, " ").split('\n').map(el => el.replace('\t', '@').split('@'))
 
 const data = []
