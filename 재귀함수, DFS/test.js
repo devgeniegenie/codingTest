@@ -20,4 +20,19 @@ const sol = (input) => {
     dfs(1)
     console.log(result)
 }
-sol(4)
+// sol(4)
+
+const sol2 = input => {
+
+    const DFS = n => {
+        if(n > input){
+            return
+        }else{
+            DFS(n*2)
+            // console.log(n)
+            DFS(n*2 + 1)
+        }
+    }
+    DFS(1)
+}
+sol2(7)
