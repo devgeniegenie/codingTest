@@ -1,10 +1,10 @@
-const inputNumber = 3
-const inputNumber2 = 2
+const n = 3
+const m = 2
 
 const sol = () => {
     let count = 0
-    for(let i = 1; i <= inputNumber; i++){
-        for(let j =1 ; j <= inputNumber; j++){
+    for(let i = 1; i <= n; i++){
+        for(let j =1 ; j <= n; j++){
             console.log(i, j)
             count++
         }
@@ -29,4 +29,4 @@ const sol2 = (n, m) => {
     DFS(0)
     return answer
 }
-console.log(sol2(inputNumber,inputNumber2))
+console.log(sol2(n,m))
