@@ -1,15 +1,13 @@
 const n = 3
-const sol = n => {
-    let answer = 1
-    const DFS = n => {
-        if(n === 1){
-            return
-        }else{
-            answer *= n
-            DFS(n-1)
+
+const sol = (n) => {
+    const Factorial = L => {
+        if(L === 1) return 1
+        else{
+            return L*Factorial(L-1)
         }
     }
-    DFS(n)
+    let answer = Factorial(n)
     return answer
 }
 console.log(sol(n))

@@ -1,15 +1,27 @@
 let input = [1, 2, 5]
-let number = 15
-const sol = (m, arr) => {
-    let answer = Number.MAX_SAFE_INTEGER
+let number = 22
 
+const sol1 = (inputPrice, inputArray) => {
+    let coin = inputArray.sort((a,b) => b-a)
+    let result = 0
+    let price = inputPrice
+    for(let i = 0; i < coin.length; i++){
+        result +=  Math.floor(price/coin[i])
+        price = price % coin[i]
+    }
+    return result
+}
+console.log(sol1(number, input))
+
+const sol2 = (number,arr) => {
+    let answer = Number.MAX_SAFE_INTEGER
     const DFS = (L, sum) => {
-        if(sum> m) return
-        if(L >= answer) return
-        if(sum === m){
-            answer = Math.min(answer, L)
+        if(sum > number) return
+        if(answer <= L) return
+        if(sum === number){
+            answer = Math.min(L, answer)
         }else{
-            for(let i=0; i < arr.length; i++){
+            for(let i = 0; i < input.length; i++){
                 DFS(L+1, sum+arr[i])
             }
         }
@@ -17,4 +29,5 @@ const sol = (m, arr) => {
     DFS(0,0)
     return answer
 }
-console.log(sol(number, input))
+console.log(sol2(number, input))
+

@@ -1,21 +1,21 @@
 const n = 4
 const m = 2
 
-const sol = (n, m) => {
-
+const sol = (n,m) =>{
     let answer = []
-    let temp = Array.from({length : m})
-    const DFS = (L, num) => {
+    let temp = []
+    const Combination = (L, x) => {
         if(L === m){
             answer.push(temp.slice())
         }else{
-            for(let i = num; i <= n; i++){
-                temp[L] = i
-                DFS(L+1, i+1)
+            for(let i = x ; i <= n; i++){
+                temp.push(i)
+                Combination(L+1, i+1)
+                temp.pop()
             }
         }
     }
-    DFS(0, 1)
+    Combination(0, 1)
     return answer
 }
 console.log(sol(n,m))

@@ -3,19 +3,18 @@ const input = [3, 6, 9]
 
 const sol = (m, input) => {
     let answer = []
-    let n = input.length
-    let checkArr = Array.from({length: n}, () => 0)
-    let temp = Array.from({length: m}, () => 0)
+    let temp = Array.from({length : m})
+    let check = Array.from({length : input.length}, () => true)
     const DFS = (L) => {
-        if (L === 2) {
+        if(L === m){
             answer.push(temp.slice())
-        } else {
-            for (let i = 0; i < n; i++) {
-                if (checkArr[i] === 0) {
-                    checkArr[i] = 1
+        }else{
+            for(let i = 0; i < input.length; i++){
+                if(check[i]){
+                    check[i] = false
                     temp[L] = input[i]
                     DFS(L+1)
-                    checkArr[i]=0
+                    check[i] = true
                 }
             }
         }
@@ -23,4 +22,4 @@ const sol = (m, input) => {
     DFS(0)
     return answer
 }
-console.log(sol(m, input))
+console.log(sol(m,input))
